@@ -6,6 +6,7 @@ class Keys
   end
 
   def verify_key(input)
+    return input if input == 'random'
     input.is_a?(Integer) && input.to_s.length == 5 ?
       input : 'invalid'
   end
