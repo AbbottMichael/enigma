@@ -28,6 +28,10 @@ RSpec.describe Keys do
       keys2 = Keys.new(1234)
 
       expect(keys2.verify_key(keys2.key)).to eq('invalid')
+
+      keys3 = Keys.new('random')
+
+      expect(keys2.verify_key(keys3.key)).to eq('random')
     end
   end
 end
