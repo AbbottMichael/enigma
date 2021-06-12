@@ -4,4 +4,9 @@ class Keys
   def initialize(key)
     @key = key
   end
+
+  def verify_key(input)
+    input.is_a?(Integer) && input.to_s.length == 5 ?
+      input : 'invalid'
+  end
 end

@@ -5,10 +5,11 @@ require './lib/keys.rb'
 SimpleCov.start
 
 RSpec.describe Keys do
+  before :each do
+    @keys = Keys.new(12345)
+  end
+
   describe 'instantiation' do
-    before :each do
-      @keys = Keys.new(12345)
-    end
 
     it 'exists' do
       expect(@keys).to be_an_instance_of(Keys)
@@ -20,12 +21,13 @@ RSpec.describe Keys do
   end
 
   describe 'methods' do
+
     it 'can verify the key is in the correct format' do
-      expect(verify_key(@key)).to eq(12345)
+      expect(@keys.verify_key(@keys.key)).to eq(12345)
 
-      @key = 1234
+      keys2 = Keys.new(1234)
 
-      expect(verify_key(@key)).to eq('invalid')
+      expect(keys2.verify_key(keys2.key)).to eq('invalid')
     end
   end
 end
