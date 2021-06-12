@@ -13,5 +13,9 @@ RSpec.describe Keys do
     it 'exists' do
       expect(@keys).to be_an_instance_of(Keys)
     end
+
+    it 'has readable attributes' do
+      expect(@keys.num_5d).to eq(12345)
+    end
   end
 end
