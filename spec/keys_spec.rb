@@ -15,7 +15,17 @@ RSpec.describe Keys do
     end
 
     it 'has readable attributes' do
-      expect(@keys.num_5d).to eq(12345)
+      expect(@keys.key).to eq(12345)
+    end
+  end
+
+  describe 'methods' do
+    it 'can verify the key is in the correct format' do
+      expect(verify_key(@key)).to eq(12345)
+
+      @key = 1234
+
+      expect(verify_key(@key)).to eq('invalid')
     end
   end
 end
