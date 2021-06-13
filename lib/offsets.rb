@@ -7,7 +7,7 @@ class Offsets
     @date = date
     @verified_date = verify_date
     @processed_date = process_date
-    @offsets_hash = {}
+    @offsets_hash = offsets_hash_builder
   end
 
   def verify_date
@@ -29,5 +29,15 @@ class Offsets
     date_squared = (@verified_date.to_i) ** 2
     return '0000' if date_squared == 0
     date_squared.to_s[-4..-1]
+  end
+
+  def offsets_hash_builder
+    @offsets_hash = {}
+    @offsets_hash.merge!(
+      A: @processed_date[0].to_i,
+      B: @processed_date[1].to_i,
+      C: @processed_date[2].to_i,
+      D: @processed_date[3].to_i
+    )
   end
 end

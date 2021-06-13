@@ -19,7 +19,7 @@ RSpec.describe Offsets do
       expect(@offsets.date).to eq('040895')
       expect(@offsets.verified_date).to eq('040895')
       expect(@offsets.processed_date).to eq('1025')
-      expect(@offsets.offsets_hash).to eq({})
+      expect(@offsets.offsets_hash).to eq({:A=>1, :B=>0, :C=>2, :D=>5})
     end
 
   end
