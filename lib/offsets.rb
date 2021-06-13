@@ -1,3 +1,5 @@
+require 'time'
+
 class Offsets
   attr_reader :date, :offsets_hash
 
@@ -14,5 +16,10 @@ class Offsets
     invalid_2 = 'invalid date: only integer values are acceptable'
     return invalid_2 if date_scan.skip(/\d+/) != 6
     date
+  end
+
+  def todays_date
+    today_time = Time.new
+    today_time.strftime("%m%d%y")
   end
 end
