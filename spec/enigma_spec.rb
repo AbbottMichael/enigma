@@ -24,4 +24,11 @@ RSpec.describe Enigma do
       expect(@enigma.character_set).to eq(expected)
     end
   end
+
+  describe 'methods' do
+
+    it 'can encrypt a message' do
+      expect(@enigma.encryption('Hello world', '02715', '040895')).to eq("keder ohulw")
+    end
+  end
 end
