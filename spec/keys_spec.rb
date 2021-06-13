@@ -6,7 +6,7 @@ SimpleCov.start
 
 RSpec.describe Keys do
   before :each do
-    @keys = Keys.new(12345)
+    @keys = Keys.new('12345')
   end
 
   describe 'instantiation' do
@@ -16,7 +16,7 @@ RSpec.describe Keys do
     end
 
     it 'has readable attributes' do
-      expect(@keys.key).to eq(12345)
+      expect(@keys.key).to eq('12345')
     end
   end
 
@@ -25,7 +25,7 @@ RSpec.describe Keys do
     it 'can verify the key is in the correct format' do
       expect(@keys.verify_key(@keys.key)).to eq('12345')
 
-      keys2 = Keys.new(1234)
+      keys2 = Keys.new('1234')
 
       expect(keys2.verify_key(keys2.key)).to eq('invalid')
 
