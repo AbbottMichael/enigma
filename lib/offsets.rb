@@ -1,21 +1,23 @@
 require 'time'
 
 class Offsets
-  attr_reader :date, :offsets_hash
+  attr_reader :date, :offsets_hash, :verified_date, :processed_date
 
   def initialize(date)
     @date = date
+    @verified_date = verify_date
+    @processed_date = process_date
     @offsets_hash = {}
   end
 
-  def verify_date(date)
-    return todays_date if date == 'todays date'
+  def verify_date
+    return todays_date if @date == 'todays date'
     invalid_1 = 'invalid date: must have 6 digits'
-    return invalid_1 if date.length != 6
-    date_scan = StringScanner.new(date)
+    return invalid_1 if @date.length != 6
+    date_scan = StringScanner.new(@date)
     invalid_2 = 'invalid date: only integer values are acceptable'
     return invalid_2 if date_scan.skip(/\d+/) != 6
-    date
+    @date
   end
 
   def todays_date
@@ -24,7 +26,7 @@ class Offsets
   end
 
   def process_date
-    date_squared = (@date.to_i) ** 2
+    date_squared = (@verified_date.to_i) ** 2
     date_squared.to_s[-4..-1]
   end
 end
