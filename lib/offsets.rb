@@ -22,4 +22,9 @@ class Offsets
     today_time = Time.new
     today_time.strftime("%d%m%y")
   end
+
+  def process_date
+    date_squared = (@date.to_i) ** 2
+    date_squared.to_s[-4..-1]
+  end
 end
