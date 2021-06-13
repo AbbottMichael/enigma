@@ -25,9 +25,13 @@ RSpec.describe Offsets do
   describe 'methods' do
 
     it 'can verify the date input is in the correct format' do
+
+      time = Time.parse('2021-06-13')
+      allow(Time).to receive(:new).and_return(time)
+      
       @offsets2 = Offsets.new('todays date')
 
-      expect(@offsets2.verify_date(@offsets2.date)).to eq('todays date')
+      expect(@offsets2.verify_date(@offsets2.date)).to eq("130621")
 
       @offsets3 = Offsets.new('04089')
       invalid_1 = 'invalid date: must have 6 digits'
@@ -50,6 +54,8 @@ RSpec.describe Offsets do
 
     it 'can square and return the last 4 digits of date' do
       expect(@offsets.process_date).to eq('1025')
+
+
     end
   end
 end

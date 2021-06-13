@@ -9,7 +9,7 @@ class Offsets
   end
 
   def verify_date(date)
-    return date if date == 'todays date'
+    return todays_date if date == 'todays date'
     invalid_1 = 'invalid date: must have 6 digits'
     return invalid_1 if date.length != 6
     date_scan = StringScanner.new(date)
