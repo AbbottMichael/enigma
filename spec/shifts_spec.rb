@@ -45,7 +45,7 @@ RSpec.describe Shifts do
         C: 73,
         D: 20
       }
-      expect(@shifts2.shifts_hash_builder).to eq(expected)
+      expect(@shifts2.shifts_hash).to eq(expected)
     end
   end
 end
