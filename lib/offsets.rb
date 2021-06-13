@@ -5,4 +5,14 @@ class Offsets
     @date = date
     @offsets_hash = {}
   end
+
+  def verify_date(date)
+    return date if date == 'todays date'
+    invalid_1 = 'invalid date: must have 6 digits'
+    return invalid_1 if date.length != 6
+    date_scan = StringScanner.new(date)
+    invalid_2 = 'invalid date: only integer values are acceptable'
+    return invalid_2 if date_scan.skip(/\d+/) != 6
+    date
+  end
 end
