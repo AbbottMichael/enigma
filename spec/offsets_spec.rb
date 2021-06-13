@@ -57,7 +57,9 @@ RSpec.describe Offsets do
     it 'can square and return the last 4 digits of date' do
       expect(@offsets.process_date).to eq('1025')
 
+      @offsets3 = Offsets.new('04089')
 
+      expect(@offsets3.process_date).to eq('0000')
     end
   end
 end

@@ -27,6 +27,7 @@ class Offsets
 
   def process_date
     date_squared = (@verified_date.to_i) ** 2
+    return '0000' if date_squared == 0
     date_squared.to_s[-4..-1]
   end
 end
