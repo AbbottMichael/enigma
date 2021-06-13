@@ -44,5 +44,15 @@ RSpec.describe Keys do
       allow(@keys).to receive(:rand).and_return(7329)
       expect(@keys.random_key).to eq('07329')
     end
+
+    it 'can return a keys hash' do
+      expected = {
+        A: 1,
+        B: 3,
+        C: 5,
+        D: 7
+      }
+      expect(@keys.key_hash).to eq(expected)
+    end
   end
 end
