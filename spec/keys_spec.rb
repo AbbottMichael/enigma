@@ -17,28 +17,29 @@ RSpec.describe Keys do
     it 'has readable attributes' do
       expect(@keys.key).to eq('01234')
       expect(@keys.verified_key).to eq('01234')
-      expect(@keys.keys_hash).to eq({})
+      expect(@keys.keys_hash).to eq({:A=>1, :B=>12, :C=>23, :D=>34})
     end
   end
 
   describe 'methods' do
 
     it 'can verify the key is in the correct format' do
-      expect(@keys.verify_key(@keys.key)).to eq('01234')
+      expect(@keys.verify_key).to eq('01234')
 
       keys2 = Keys.new('1234')
       invalid_1 = 'invalid key: must have 5 digits'
 
-      expect(keys2.verify_key(keys2.key)).to eq(invalid_1)
+      expect(keys2.verify_key).to eq(invalid_1)
 
       keys3 = Keys.new('random')
+      allow(keys3).to receive(:rand).and_return(7329)
 
-      expect(keys3.verify_key(keys3.key)).to eq('random')
+      expect(keys3.verify_key).to eq('07329')
 
       keys4 = Keys.new('78i9u')
       invalid_2 = 'invalid key: only integer values are acceptable'
 
-      expect(keys4.verify_key(keys4.key)).to eq(invalid_2)
+      expect(keys4.verify_key).to eq(invalid_2)
     end
 
     it 'can generate a random 5 digit number' do

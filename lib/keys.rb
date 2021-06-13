@@ -3,18 +3,18 @@ class Keys
 
   def initialize(key)
     @key = key
-    @verified_key = verify_key(@key)
-    @keys_hash = {}
+    @verified_key = verify_key
+    @keys_hash = keys_hash_builder
   end
 
-  def verify_key(input)
-    return input if input == 'random'
+  def verify_key
+    return random_key if @key == 'random'
     invalid_1 = 'invalid key: must have 5 digits'
-    return invalid_1 if input.length != 5
-    input_scan = StringScanner.new(input)
+    return invalid_1 if @key.length != 5
+    key_scan = StringScanner.new(@key)
     invalid_2 = 'invalid key: only integer values are acceptable'
-    return invalid_2 if input_scan.skip(/\d+/) != 5
-    input
+    return invalid_2 if key_scan.skip(/\d+/) != 5
+    @key
   end
 
   def random_key
@@ -23,6 +23,7 @@ class Keys
   end
 
   def keys_hash_builder
+    @keys_hash = {}
     @keys_hash.merge!(
       A: (@verified_key[0] + @verified_key[1]).to_i,
       B: (@verified_key[1] + @verified_key[2]).to_i,
