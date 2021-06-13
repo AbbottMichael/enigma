@@ -45,7 +45,7 @@ RSpec.describe Offsets do
       time = Time.parse('2021-06-13')
       allow(Time).to receive(:new).and_return(time)
 
-      expect(@offsets.todays_date).to eq('061321')
+      expect(@offsets.todays_date).to eq('130621')
     end
   end
 end

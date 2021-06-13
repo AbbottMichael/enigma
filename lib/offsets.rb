@@ -20,6 +20,6 @@ class Offsets
 
   def todays_date
     today_time = Time.new
-    today_time.strftime("%m%d%y")
+    today_time.strftime("%d%m%y")
   end
 end
