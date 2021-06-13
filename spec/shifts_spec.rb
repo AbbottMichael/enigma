@@ -32,4 +32,20 @@ RSpec.describe Shifts do
       expect(@shifts2.offsets.date).to eq('040895')
     end
   end
+
+  describe 'methods' do
+    before :each do
+      @shifts2 = Shifts.new('02715', '040895')
+    end
+
+    it 'can create a shifts hash' do
+      expected = {
+        A: 3,
+        B: 27,
+        C: 73,
+        D: 20
+      }
+      expect(@shifts2.shifts_hash_builder).to eq(expected)
+    end
+  end
 end
