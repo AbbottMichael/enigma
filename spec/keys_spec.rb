@@ -5,7 +5,7 @@ require './lib/keys.rb'
 
 RSpec.describe Keys do
   before :each do
-    @keys = Keys.new('01234')
+    @keys = Keys.new('02715')
   end
 
   describe 'instantiation' do
@@ -15,16 +15,16 @@ RSpec.describe Keys do
     end
 
     it 'has readable attributes' do
-      expect(@keys.key).to eq('01234')
-      expect(@keys.verified_key).to eq('01234')
-      expect(@keys.keys_hash).to eq({:A=>1, :B=>12, :C=>23, :D=>34})
+      expect(@keys.key).to eq('02715')
+      expect(@keys.verified_key).to eq('02715')
+      expect(@keys.keys_hash).to eq({:A=>2, :B=>27, :C=>71, :D=>15})
     end
   end
 
   describe 'methods' do
 
     it 'can verify the key is in the correct format' do
-      expect(@keys.verify_key).to eq('01234')
+      expect(@keys.verify_key).to eq('02715')
 
       keys2 = Keys.new('1234')
       invalid_1 = 'invalid key: must have 5 digits'
@@ -49,10 +49,10 @@ RSpec.describe Keys do
 
     it 'can return a keys hash' do
       expected = {
-        A: 1,
-        B: 12,
-        C: 23,
-        D: 34
+        A: 2,
+        B: 27,
+        C: 71,
+        D: 15
       }
       expect(@keys.keys_hash_builder).to eq(expected)
     end
