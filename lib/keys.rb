@@ -7,8 +7,12 @@ class Keys
 
   def verify_key(input)
     return input if input == 'random'
-    input.is_a?(Integer) && input.to_s.length == 5 ?
-      input.to_s : 'invalid'
+    invalid_1 = 'invalid key: must have 5 digits'
+    return invalid_1 if input.length != 5
+    input_scan = StringScanner.new(input)
+    invalid_2 = 'invalid key: only integer values are acceptable'
+    return invalid_2 if input_scan.skip(/\d+/) != 5
+    input
   end
 
   def random_key
