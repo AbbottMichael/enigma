@@ -61,5 +61,15 @@ RSpec.describe Offsets do
 
       expect(@offsets3.process_date).to eq('0000')
     end
+
+    it 'can create an offsets hash' do
+      expected = {
+        A: 1,
+        B: 0,
+        C: 2,
+        D: 5
+      }
+      expect(@offsets.offsets_hash_builder).to eq(expected)
+    end
   end
 end
