@@ -17,6 +17,8 @@ RSpec.describe Keys do
 
     it 'has readable attributes' do
       expect(@keys.key).to eq('01234')
+      expect(@keys.verified_key).to eq('01234')
+      expect(@keys.keys_hash).to eq({})
     end
   end
 
@@ -48,11 +50,11 @@ RSpec.describe Keys do
     it 'can return a keys hash' do
       expected = {
         A: 1,
-        B: 3,
-        C: 5,
-        D: 7
+        B: 12,
+        C: 23,
+        D: 34
       }
-      expect(@keys.key_hash).to eq(expected)
+      expect(@keys.keys_hash_builder).to eq(expected)
     end
   end
 end
