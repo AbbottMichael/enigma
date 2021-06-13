@@ -1,8 +1,7 @@
-require 'rspec'
 require 'simplecov'
-require './lib/keys.rb'
-
 SimpleCov.start
+require 'rspec'
+require './lib/keys.rb'
 
 RSpec.describe Keys do
   before :each do
