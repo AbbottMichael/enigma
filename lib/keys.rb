@@ -4,7 +4,7 @@ class Keys
   def initialize(key)
     @key = key
     @verified_key = verify_key
-    @keys_hash = {}
+    @keys_hash = keys_hash_builder
   end
 
   def verify_key
@@ -23,6 +23,7 @@ class Keys
   end
 
   def keys_hash_builder
+    @keys_hash = {}
     @keys_hash.merge!(
       A: (@verified_key[0] + @verified_key[1]).to_i,
       B: (@verified_key[1] + @verified_key[2]).to_i,

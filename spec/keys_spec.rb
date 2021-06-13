@@ -17,7 +17,7 @@ RSpec.describe Keys do
     it 'has readable attributes' do
       expect(@keys.key).to eq('01234')
       expect(@keys.verified_key).to eq('01234')
-      expect(@keys.keys_hash).to eq({})
+      expect(@keys.keys_hash).to eq({:A=>1, :B=>12, :C=>23, :D=>34})
     end
   end
 
