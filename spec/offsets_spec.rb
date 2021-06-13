@@ -39,5 +39,9 @@ RSpec.describe Offsets do
       expect(@offsets4.verify_date(@offsets4.date)).to eq(invalid_2)
       expect(@offsets.verify_date(@offsets.date)).to eq('040895')
     end
+
+    it 'can return todays date in the correct format' do
+      expect(@offsets.todays_date).to eq('061321')
+    end
   end
 end
