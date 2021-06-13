@@ -3,18 +3,18 @@ class Keys
 
   def initialize(key)
     @key = key
-    @verified_key = verify_key(@key)
+    @verified_key = verify_key
     @keys_hash = {}
   end
 
-  def verify_key(input)
-    return input if input == 'random'
+  def verify_key
+    return random_key if @key == 'random'
     invalid_1 = 'invalid key: must have 5 digits'
-    return invalid_1 if input.length != 5
-    input_scan = StringScanner.new(input)
+    return invalid_1 if @key.length != 5
+    key_scan = StringScanner.new(@key)
     invalid_2 = 'invalid key: only integer values are acceptable'
-    return invalid_2 if input_scan.skip(/\d+/) != 5
-    input
+    return invalid_2 if key_scan.skip(/\d+/) != 5
+    @key
   end
 
   def random_key
