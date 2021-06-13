@@ -1,5 +1,6 @@
 require 'simplecov'
 SimpleCov.start
+require 'time'
 require 'rspec'
 require './lib/offsets.rb'
 
@@ -41,6 +42,9 @@ RSpec.describe Offsets do
     end
 
     it 'can return todays date in the correct format' do
+      time = Time.parse('2021-06-13')
+      allow(Time).to receive(:new).and_return(time)
+
       expect(@offsets.todays_date).to eq('061321')
     end
   end
