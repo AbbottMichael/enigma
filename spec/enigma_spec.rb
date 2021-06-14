@@ -32,6 +32,11 @@ RSpec.describe Enigma do
       expect(@enigma.encryption('Hello world', shifts)).to eq('keder ohulw')
     end
 
+    it 'can decrypt a message' do
+      shifts = Shifts.new('02715', '040895')
+      expect(@enigma.decryption('keder ohulw', shifts)).to eq('hello world')
+    end
+
     it 'can return an encryption hash' do
       expected = {
         encryption: 'keder ohulw',
