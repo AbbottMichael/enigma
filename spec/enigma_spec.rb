@@ -5,11 +5,11 @@ require './lib/shifts.rb'
 require './lib/enigma.rb'
 
 RSpec.describe Enigma do
+  before :each do
+    @enigma = Enigma.new
+  end
 
   describe 'instantiation' do
-    before :each do
-      @enigma = Enigma.new
-    end
 
     it 'exists' do
       expect(@enigma).to be_an_instance_of(Enigma)
