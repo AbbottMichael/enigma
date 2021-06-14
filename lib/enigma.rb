@@ -2,7 +2,7 @@ class Enigma
   attr_reader :character_set
 
   def initialize
-    @character_set = ("a".."z").to_a << " "
+    @character_set = ('a'..'z').to_a << ' '
     @shift_count = [0,1,2,3]
   end
 

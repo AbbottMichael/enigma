@@ -28,7 +28,16 @@ RSpec.describe Enigma do
   describe 'methods' do
 
     it 'can encrypt a message' do
-      expect(@enigma.encryption('Hello world', '02715', '040895')).to eq("keder ohulw")
+      expect(@enigma.encryption('Hello world', '02715', '040895')).to eq('keder ohulw')
+    end
+
+    it 'can return an encryption hash' do
+      expected = {
+        encryption: 'keder ohulw',
+        key: '02715',
+        date: '040895'
+      }
+      expect(@enigma.encrypt('Hello world', '02715', '040895')).to eq(expected)
     end
   end
 end
