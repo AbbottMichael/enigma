@@ -2,12 +2,11 @@ require 'strscan'
 require 'time'
 
 class Offsets
-  attr_reader :date, :offsets_hash, :verified_date, :processed_date
+  attr_reader :offsets_hash, :verified_date
 
   def initialize(date)
     @date = date
     @verified_date = verify_date
-    @processed_date = process_date
     @offsets_hash = offsets_hash_builder
   end
 
@@ -26,7 +25,7 @@ class Offsets
     today_time.strftime("%d%m%y")
   end
 
-  def process_date
+  def processed_date
     date_squared = (@verified_date.to_i) ** 2
     return '0000' if date_squared == 0
     date_squared.to_s[-4..-1]
@@ -34,10 +33,10 @@ class Offsets
 
   def offsets_hash_builder
     @offsets_hash = {
-      A: @processed_date[0].to_i,
-      B: @processed_date[1].to_i,
-      C: @processed_date[2].to_i,
-      D: @processed_date[3].to_i
+      A: processed_date[0].to_i,
+      B: processed_date[1].to_i,
+      C: processed_date[2].to_i,
+      D: processed_date[3].to_i
     }
   end
 end

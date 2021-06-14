@@ -16,9 +16,7 @@ RSpec.describe Offsets do
     end
 
     it 'has readable attributes' do
-      expect(@offsets.date).to eq('040895')
       expect(@offsets.verified_date).to eq('040895')
-      expect(@offsets.processed_date).to eq('1025')
       expect(@offsets.offsets_hash).to eq({:A=>1, :B=>0, :C=>2, :D=>5})
     end
 
@@ -55,11 +53,11 @@ RSpec.describe Offsets do
     end
 
     it 'can square and return the last 4 digits of date' do
-      expect(@offsets.process_date).to eq('1025')
+      expect(@offsets.processed_date).to eq('1025')
 
       @offsets3 = Offsets.new('04089')
 
-      expect(@offsets3.process_date).to eq('0000')
+      expect(@offsets3.processed_date).to eq('0000')
     end
 
     it 'can create an offsets hash' do
