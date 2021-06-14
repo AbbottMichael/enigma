@@ -8,13 +8,13 @@ message.close
 
 enigma = Enigma.new
 
-encrypt_details = enigma.encrypt(message_to_encrypt)
+encryption = enigma.encrypt(message_to_encrypt)
 
 ciphertext = File.open(ARGV[1], 'w')
 
-ciphertext.write(encrypt_details[:encryption])
+ciphertext.write(encryption[:encryption])
 
 ciphertext.close
 
-puts "Created #{ARGV[1]} with the key #{encrypt_details[:key]}\
- and date #{encrypt_details[:date]}"
+puts "Created '#{ARGV[1]}' with the key #{encryption[:key]}\
+ and date #{encryption[:date]}"
