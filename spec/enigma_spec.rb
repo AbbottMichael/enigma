@@ -54,5 +54,24 @@ RSpec.describe Enigma do
       }
       expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
     end
+
+    it 'can encrypt a message with a key; no provided date' do
+      encrypted = @enigma.encrypt('Hello world', '02715')
+
+      expect(encrypted[:date]).to be_a(String)
+    end
+
+    it 'can decrypt a message with a key; no provided date' do
+      decrypted = @enigma.decrypt('okfavfqdyry', '02715')
+
+      expect(decrypted[:date]).to be_a(String)
+    end
+
+    it 'can encrypt a message with no key or date provided' do
+      encrypted = @enigma.encrypt('hello world')
+
+      expect(encrypted[:key]).to be_a(String)
+      expect(encrypted[:date]).to be_a(String)
+    end
   end
 end
