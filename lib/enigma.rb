@@ -18,14 +18,11 @@ class Enigma
 
   def encryption(message, shifts)
     message_array = message.downcase.split('')
-    position_count = -1
+    shift = shifts.shifts_hash.values
     message_array.map do |letter|
-      position_count += 1
-      index_value = @character_set.find_index(letter)
-      next letter if index_value == nil
-      shift = shifts.shifts_hash.values.rotate(position_count)
-      shifted_char_set = @character_set.rotate(shift[0])
-      shifted_char_set[index_value]
+      next letter if @character_set.find_index(letter) == nil
+      shifted_char_set = @character_set.rotate(shift.rotate![-1])
+      shifted_char_set[@character_set.find_index(letter)]
     end.join
   end
 
@@ -40,14 +37,11 @@ class Enigma
 
   def decryption(ciphertext, shifts)
     ciphertext_array = ciphertext.downcase.split('')
-    position_count = -1
+    shift = shifts.shifts_hash.values
     ciphertext_array.map do |letter|
-      position_count += 1
-      index_value = @character_set.find_index(letter)
-      next letter if index_value == nil
-      shift = shifts.shifts_hash.values.rotate(position_count)
-      shifted_char_set = @character_set.rotate(-shift[0])
-      shifted_char_set[index_value]
+      next letter if @character_set.find_index(letter) == nil
+      shifted_char_set = @character_set.rotate(-shift.rotate![-1])
+      shifted_char_set[@character_set.find_index(letter)]
     end.join
   end
 end
