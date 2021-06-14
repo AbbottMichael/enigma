@@ -31,7 +31,7 @@ RSpec.describe Offsets do
       time = Time.parse('2021-06-13')
       allow(Time).to receive(:new).and_return(time)
 
-      @offsets2 = Offsets.new('todays date')
+      @offsets2 = Offsets.new('date today')
 
       expect(@offsets2.verify_date).to eq("130621")
 
@@ -51,7 +51,7 @@ RSpec.describe Offsets do
       time = Time.parse('2021-06-13')
       allow(Time).to receive(:new).and_return(time)
 
-      expect(@offsets.todays_date).to eq('130621')
+      expect(@offsets.date_today).to eq('130621')
     end
 
     it 'can square and return the last 4 digits of date' do
