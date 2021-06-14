@@ -1,3 +1,4 @@
+require 'strscan'
 require 'time'
 
 class Offsets
@@ -12,10 +13,10 @@ class Offsets
 
   def verify_date
     return date_today if @date == 'date today'
-    invalid_1 = 'invalid date: must have 6 digits'
+    invalid_1 = 'INVALID DATE! (must have 6 digits: DDMMYY)'
     return invalid_1 if @date.length != 6
     date_scan = StringScanner.new(@date)
-    invalid_2 = 'invalid date: only integer values are acceptable'
+    invalid_2 = 'INVALID DATE! (only integer values are acceptable)'
     return invalid_2 if date_scan.skip(/\d+/) != 6
     @date
   end

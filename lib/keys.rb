@@ -11,10 +11,10 @@ class Keys
 
   def verify_key
     return random_key if @key == 'random'
-    invalid_1 = 'invalid key: must have 5 digits'
+    invalid_1 = 'INVALID KEY! (must have 5 digits)'
     return invalid_1 if @key.length != 5
     key_scan = StringScanner.new(@key)
-    invalid_2 = 'invalid key: only integer values are acceptable'
+    invalid_2 = 'INVALID KEY! (only integer values are acceptable)'
     return invalid_2 if key_scan.skip(/\d+/) != 5
     @key
   end

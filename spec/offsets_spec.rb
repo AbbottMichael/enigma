@@ -36,12 +36,12 @@ RSpec.describe Offsets do
       expect(@offsets2.verify_date).to eq("130621")
 
       @offsets3 = Offsets.new('04089')
-      invalid_1 = 'invalid date: must have 6 digits'
+      invalid_1 = 'INVALID DATE! (must have 6 digits: DDMMYY)'
 
       expect(@offsets3.verify_date).to eq(invalid_1)
 
       @offsets4 = Offsets.new('04O895')
-      invalid_2 = 'invalid date: only integer values are acceptable'
+      invalid_2 = 'INVALID DATE! (only integer values are acceptable)'
 
       expect(@offsets4.verify_date).to eq(invalid_2)
       expect(@offsets.verify_date).to eq('040895')
