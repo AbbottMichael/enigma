@@ -2,11 +2,13 @@ require './lib/keys.rb'
 require './lib/offsets.rb'
 
 class Shifts
-  attr_reader :keys, :offsets, :shifts_hash
+  attr_reader :keys,
+              :offsets,
+              :shifts_hash
 
   def initialize(keys_input, date_input)
-    @keys = Keys.new(keys_input)
-    @offsets = Offsets.new(date_input)
+    @keys        = Keys.new(keys_input)
+    @offsets     = Offsets.new(date_input)
     @shifts_hash = shifts_hash_builder
   end
 

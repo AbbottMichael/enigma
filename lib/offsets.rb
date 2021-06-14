@@ -2,12 +2,13 @@ require 'strscan'
 require 'time'
 
 class Offsets
-  attr_reader :offsets_hash, :verified_date
+  attr_reader :offsets_hash,
+              :verified_date
 
   def initialize(date)
-    @date = date
+    @date          = date
     @verified_date = verify_date
-    @offsets_hash = offsets_hash_builder
+    @offsets_hash  = offsets_hash_builder
   end
 
   def verify_date

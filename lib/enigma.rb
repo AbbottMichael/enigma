@@ -8,10 +8,11 @@ class Enigma
 
   def encrypt(message, key = 'random', date = 'date today')
     shifts = Shifts.new(key, date)
+
     {
-      :encryption => encryption(message, shifts),
-      :key => shifts.keys.verified_key,
-      :date => shifts.offsets.verified_date
+      encryption: encryption(message, shifts),
+      key:        shifts.keys.verified_key,
+      date:       shifts.offsets.verified_date
     }
   end
 
@@ -28,10 +29,11 @@ class Enigma
 
   def decrypt(ciphertext, key, date = 'date today')
     shifts = Shifts.new(key, date)
+
     {
-      :decryption => decryption(ciphertext, shifts),
-      :key => shifts.keys.verified_key,
-      :date => shifts.offsets.verified_date
+      decryption: decryption(ciphertext, shifts),
+      key:        shifts.keys.verified_key,
+      date:       shifts.offsets.verified_date
     }
   end
 
