@@ -14,18 +14,19 @@ RSpec.describe Enigma do
     it 'exists' do
       expect(@enigma).to be_an_instance_of(Enigma)
     end
+  end
 
-    it 'has readable attributes' do
+  describe 'methods' do
+
+    it 'can generate the character_set' do
       expected = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
         'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
         'y', 'z', ' '
       ]
+
       expect(@enigma.character_set).to eq(expected)
     end
-  end
-
-  describe 'methods' do
 
     it 'can encrypt a message' do
       shifts = Shifts.new('02715', '040895')

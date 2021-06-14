@@ -1,3 +1,5 @@
+require 'strscan'
+
 class Keys
   attr_reader :key, :verified_key, :keys_hash
 
@@ -9,10 +11,10 @@ class Keys
 
   def verify_key
     return random_key if @key == 'random'
-    invalid_1 = 'invalid key: must have 5 digits'
+    invalid_1 = 'INVALID KEY! (must have 5 digits)'
     return invalid_1 if @key.length != 5
     key_scan = StringScanner.new(@key)
-    invalid_2 = 'invalid key: only integer values are acceptable'
+    invalid_2 = 'INVALID KEY! (only integer values are acceptable)'
     return invalid_2 if key_scan.skip(/\d+/) != 5
     @key
   end
@@ -23,12 +25,11 @@ class Keys
   end
 
   def keys_hash_builder
-    @keys_hash = {}
-    @keys_hash.merge!(
+    @keys_hash = {
       A: (@verified_key[0] + @verified_key[1]).to_i,
       B: (@verified_key[1] + @verified_key[2]).to_i,
       C: (@verified_key[2] + @verified_key[3]).to_i,
       D: (@verified_key[3] + @verified_key[4]).to_i
-    )
+    }
   end
 end

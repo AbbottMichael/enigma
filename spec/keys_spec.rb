@@ -27,7 +27,7 @@ RSpec.describe Keys do
       expect(@keys.verify_key).to eq('02715')
 
       keys2 = Keys.new('1234')
-      invalid_1 = 'invalid key: must have 5 digits'
+      invalid_1 = 'INVALID KEY! (must have 5 digits)'
 
       expect(keys2.verify_key).to eq(invalid_1)
 
@@ -37,7 +37,7 @@ RSpec.describe Keys do
       expect(keys3.verify_key).to eq('07329')
 
       keys4 = Keys.new('78i9u')
-      invalid_2 = 'invalid key: only integer values are acceptable'
+      invalid_2 = 'INVALID KEY! (only integer values are acceptable)'
 
       expect(keys4.verify_key).to eq(invalid_2)
     end

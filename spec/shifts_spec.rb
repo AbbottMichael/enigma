@@ -6,37 +6,34 @@ require './lib/offsets.rb'
 require './lib/shifts.rb'
 
 RSpec.describe Shifts do
+  before :each do
+    @shifts = Shifts.new('02715', '040895')
+  end
 
   describe 'instantiation' do
-    before :each do
-      @shifts = Shifts.new
-    end
 
     it 'exists' do
       expect(@shifts).to be_an_instance_of(Shifts)
     end
 
-    it 'has readable default attributes' do
+    it 'has readable attributes' do
       expect(@shifts.keys).to be_an_instance_of(Keys)
       expect(@shifts.offsets).to be_an_instance_of(Offsets)
-      expect(@shifts.keys.key).to eq('random')
-      expect(@shifts.offsets.date).to eq('date today')
+      expect(@shifts.keys.verified_key).to eq('02715')
+      expect(@shifts.offsets.verified_date).to eq('040895')
+      expect(@shifts.shifts_hash).to be_a(Hash)
     end
 
-    it 'has readable attributes' do
-      @shifts2 = Shifts.new('02715', '040895')
+    it "can accept 'random' and 'date today' default value indicator strings" do
+      @shifts2 = Shifts.new('random', 'date today')
 
-      expect(@shifts2.keys).to be_an_instance_of(Keys)
-      expect(@shifts2.offsets).to be_an_instance_of(Offsets)
-      expect(@shifts2.keys.key).to eq('02715')
-      expect(@shifts2.offsets.date).to eq('040895')
+      expect(@shifts2.keys.verified_key.to_i).to be_an(Integer)
+      expect(@shifts2.offsets.verified_date.to_i).to be_an(Integer)
+      expect(@shifts2.shifts_hash).to be_a(Hash)
     end
   end
 
   describe 'methods' do
-    before :each do
-      @shifts2 = Shifts.new('02715', '040895')
-    end
 
     it 'can create a shifts hash' do
       expected = {
@@ -45,7 +42,7 @@ RSpec.describe Shifts do
         C: 73,
         D: 20
       }
-      expect(@shifts2.shifts_hash).to eq(expected)
+      expect(@shifts.shifts_hash).to eq(expected)
     end
   end
 end
