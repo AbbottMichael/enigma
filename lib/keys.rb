@@ -1,3 +1,5 @@
+require 'strscan'
+
 class Keys
   attr_reader :key, :verified_key, :keys_hash
 
