@@ -20,7 +20,7 @@ RSpec.describe Shifts do
       expect(@shifts.keys).to be_an_instance_of(Keys)
       expect(@shifts.offsets).to be_an_instance_of(Offsets)
       expect(@shifts.keys.key).to eq('random')
-      expect(@shifts.offsets.date).to eq('todays date')
+      expect(@shifts.offsets.date).to eq('date today')
     end
 
     it 'has readable attributes' do

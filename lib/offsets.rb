@@ -11,7 +11,7 @@ class Offsets
   end
 
   def verify_date
-    return todays_date if @date == 'todays date'
+    return date_today if @date == 'date today'
     invalid_1 = 'invalid date: must have 6 digits'
     return invalid_1 if @date.length != 6
     date_scan = StringScanner.new(@date)
@@ -20,7 +20,7 @@ class Offsets
     @date
   end
 
-  def todays_date
+  def date_today
     today_time = Time.new
     today_time.strftime("%d%m%y")
   end
