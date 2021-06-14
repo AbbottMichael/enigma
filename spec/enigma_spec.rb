@@ -40,5 +40,14 @@ RSpec.describe Enigma do
       }
       expect(@enigma.encrypt('Hello world', '02715', '040895')).to eq(expected)
     end
+
+    it 'can return a decryption hash' do
+      expected = {
+        decryption: 'hello world',
+        key: '02715',
+        date: '040895'
+      }
+      expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
+    end
   end
 end
