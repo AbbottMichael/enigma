@@ -19,16 +19,16 @@ RSpec.describe Shifts do
     it 'has readable attributes' do
       expect(@shifts.keys).to be_an_instance_of(Keys)
       expect(@shifts.offsets).to be_an_instance_of(Offsets)
-      expect(@shifts.keys.key).to eq('02715')
-      expect(@shifts.offsets.date).to eq('040895')
+      expect(@shifts.keys.verified_key).to eq('02715')
+      expect(@shifts.offsets.verified_date).to eq('040895')
       expect(@shifts.shifts_hash).to be_a(Hash)
     end
 
-    it 'can accept default indicator strings' do
+    it "can accept 'random' and 'date today' default value indicator strings" do
       @shifts2 = Shifts.new('random', 'date today')
 
-      expect(@shifts2.keys).to be_an_instance_of(Keys)
-      expect(@shifts2.offsets).to be_an_instance_of(Offsets)
+      expect(@shifts2.keys.verified_key.to_i).to be_an(Integer)
+      expect(@shifts2.offsets.verified_date.to_i).to be_an(Integer)
       expect(@shifts2.shifts_hash).to be_a(Hash)
     end
   end
