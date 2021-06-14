@@ -6,8 +6,16 @@ class Enigma
     @shift_count = [0,1,2,3]
   end
 
-  def encryption(message, key, date)
+  def encrypt(message, key = 'random', date = 'date today')
     shifts = Shifts.new(key, date)
+    final = {
+      :encryption => encryption(message, shifts),
+      :key => shifts.keys.verified_key,
+      :date => shifts.offsets.verified_date
+    }
+  end
+
+  def encryption(message, shifts)
     message_array = message.downcase.split('')
     counter = -1
     message_array.map do |letter|
