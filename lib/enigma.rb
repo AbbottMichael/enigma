@@ -1,10 +1,9 @@
 require './lib/shifts'
 
 class Enigma
-  attr_reader :character_set
 
-  def initialize
-    @character_set = ('a'..'z').to_a << ' '
+  def character_set
+    ('a'..'z').to_a << ' '
   end
 
   def encrypt(message, key = 'random', date = 'date today')
@@ -20,9 +19,9 @@ class Enigma
     message_array = message.downcase.split('')
     shift = shifts.shifts_hash.values
     message_array.map do |letter|
-      next letter if @character_set.find_index(letter) == nil
-      shifted_char_set = @character_set.rotate(shift.rotate![-1])
-      shifted_char_set[@character_set.find_index(letter)]
+      next letter if character_set.find_index(letter) == nil
+      shifted_char_set = character_set.rotate(shift.rotate![-1])
+      shifted_char_set[character_set.find_index(letter)]
     end.join
   end
 
@@ -39,9 +38,9 @@ class Enigma
     ciphertext_array = ciphertext.downcase.split('')
     shift = shifts.shifts_hash.values
     ciphertext_array.map do |letter|
-      next letter if @character_set.find_index(letter) == nil
-      shifted_char_set = @character_set.rotate(-shift.rotate![-1])
-      shifted_char_set[@character_set.find_index(letter)]
+      next letter if character_set.find_index(letter) == nil
+      shifted_char_set = character_set.rotate(-shift.rotate![-1])
+      shifted_char_set[character_set.find_index(letter)]
     end.join
   end
 end
