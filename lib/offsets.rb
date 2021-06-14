@@ -32,12 +32,11 @@ class Offsets
   end
 
   def offsets_hash_builder
-    @offsets_hash = {}
-    @offsets_hash.merge!(
+    @offsets_hash = {
       A: @processed_date[0].to_i,
       B: @processed_date[1].to_i,
       C: @processed_date[2].to_i,
       D: @processed_date[3].to_i
-    )
+    }
   end
 end

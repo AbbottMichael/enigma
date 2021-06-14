@@ -23,12 +23,11 @@ class Keys
   end
 
   def keys_hash_builder
-    @keys_hash = {}
-    @keys_hash.merge!(
+    @keys_hash = {
       A: (@verified_key[0] + @verified_key[1]).to_i,
       B: (@verified_key[1] + @verified_key[2]).to_i,
       C: (@verified_key[2] + @verified_key[3]).to_i,
       D: (@verified_key[3] + @verified_key[4]).to_i
-    )
+    }
   end
 end
