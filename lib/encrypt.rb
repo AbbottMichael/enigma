@@ -10,7 +10,9 @@ message_to_encrypt = message.read
 
 message.close
 
-encryption = Enigma.new.encrypt(message_to_encrypt)
+enigma = Enigma.new
+
+encryption = enigma.encrypt(message_to_encrypt)
 
 ciphertext = File.open(ARGV[1], 'w')
 

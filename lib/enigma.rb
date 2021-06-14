@@ -18,6 +18,7 @@ class Enigma
   def encryption(message, shifts)
     message_array = message.downcase.split('')
     shift = shifts.shifts_hash.values
+
     message_array.map do |letter|
       next letter if character_set.find_index(letter) == nil
       shifted_char_set = character_set.rotate(shift.rotate![-1])
@@ -37,6 +38,7 @@ class Enigma
   def decryption(ciphertext, shifts)
     ciphertext_array = ciphertext.downcase.split('')
     shift = shifts.shifts_hash.values
+
     ciphertext_array.map do |letter|
       next letter if character_set.find_index(letter) == nil
       shifted_char_set = character_set.rotate(-shift.rotate![-1])

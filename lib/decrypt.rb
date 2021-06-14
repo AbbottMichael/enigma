@@ -14,7 +14,9 @@ message_to_decrypt = encrypted_message.read
 
 encrypted_message.close
 
-decryption = Enigma.new.decrypt(message_to_decrypt, ARGV[2], ARGV[3])
+enigma = Enigma.new
+
+decryption = enigma.decrypt(message_to_decrypt, ARGV[2], ARGV[3])
 
 abort(decryption[:key]) if decryption[:key].include? 'INVALID'
 
