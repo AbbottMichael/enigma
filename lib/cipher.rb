@@ -2,10 +2,7 @@ class Cipher
   attr_reader :output_message
 
   def initialize(message, shifts, type)
-    @input_message = message
-    @output_message = 'text'
-    @shifts = shifts
-    @type = type
+    @output_message = algorithm(message, shifts, type)
   end
 
   def character_set
