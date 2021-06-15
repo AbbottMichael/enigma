@@ -6,6 +6,10 @@ class Enigma
     ('a'..'z').to_a << ' '
   end
 
+  def message_array(message)
+    message.downcase.split('')
+  end
+
   def encrypt(message, key = 'random', date = 'date today')
     shifts = Shifts.new(key, date)
 
@@ -17,10 +21,9 @@ class Enigma
   end
 
   def encryption(message, shifts)
-    message_array = message.downcase.split('')
     shift = shifts.shifts_hash.values
 
-    message_array.map do |letter|
+    message_array(message).map do |letter|
       next letter if character_set.find_index(letter) == nil
       shifted_char_set = character_set.rotate(shift.rotate![-1])
       shifted_char_set[character_set.find_index(letter)]
