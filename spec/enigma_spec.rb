@@ -28,6 +28,11 @@ RSpec.describe Enigma do
       expect(@enigma.character_set).to eq(expected)
     end
 
+    it 'can generate a message array' do
+      expected = [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+      expect(@enigma.message_array('Hello World')).to eq(expected)
+    end
+
     it 'can encrypt a message' do
       shifts = Shifts.new('02715', '040895')
       expect(@enigma.encryption('Hello world', shifts)).to eq('keder ohulw')
