@@ -11,4 +11,8 @@ class Cipher
   def character_set
     ('a'..'z').to_a << ' '
   end
+
+  def message_array(message)
+    message.downcase.split('')
+  end
 end
