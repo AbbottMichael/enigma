@@ -33,5 +33,11 @@ RSpec.describe Cipher do
 
       expect(@cipher.character_set).to eq(expected)
     end
+
+    it 'can generate a message array' do
+      expected = [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+
+      expect(@cipher.message_array('Hello World')).to eq(expected)
+    end
   end
 end
