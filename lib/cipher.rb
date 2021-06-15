@@ -7,4 +7,8 @@ class Cipher
     @shifts = shifts
     @type = type
   end
+
+  def character_set
+    ('a'..'z').to_a << ' '
+  end
 end
