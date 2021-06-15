@@ -1,7 +1,42 @@
-command line interface
-add a command line interface for encryption and decryption. you should create a
-runner file called encrypt.rb that takes two command line arguments. the first
-is an existing file that contains a message to encrypt. the second is a file
-where your program should write the encrypted message. in addition to writing
-the encrypted message to the file, your program should output to the screen the
-file it wrote to, the key and the date.
+## self assessment
+enigma - 2105be mod 1, week 5-6 (individual) project
+
+
+#### functionality ----- *meets expectations*
+- enigma class with #encrypt and #decrypt methods are successfully implemented.
+- encrypt and decrypt command line interfaces are successfully implemented.
+- an encrypted copy of this self assessment is included below : )
+
+#### object oriented programming ----- *meets expectations*
+- my project is broken into 5 reasonably sized classes (not including 2 runners) that i feel
+ are appropriately encapsulated.
+- none of my classes contain knowledge/information/behavior that they shouldn’t know about.
+- i did my best to follow srp
+  - keys class - contains only knowledge/information/behaviors associated with keys
+  - offsets class - contains only knowledge/information/behaviors associated with offsets
+  - shifts class - contains only knowledge/information/behaviors associated with shifts
+  - cipher class - contains only knowledge/information/behaviors associated with the enigma cipher
+  - enigma class - contains only knowledge/information/behaviors associated with displaying the final
+  results of encrypted or decrypted messages
+
+#### ruby conventions and mechanics ----- *meets expectations*
+- my code is properly indented and spaced, lines are generally not excessively long and do not exceed
+80 characters total.
+- my project's class, method, variable, and file names follow convention.
+- hashes were implemented in the collection of the keys and offsets which made for a logical #merge
+adding matching key's values to create the shifts.
+
+#### test driven development ----- *meets expectations*
+- simplecov is returning 100% coverage and i believe every method is tested at both the unit and
+integration level.
+- stubs were used for tests that called #rand and time.
+- solutions have been implemented to address edge cases such as provided key length greater or
+less than 5 digits, provided dates greater or less than 6 or not providing the correct number of
+items when running lib/encrypt.rb.
+- git history demonstrates i was writing tests before implementation code. (tdd is great!)
+
+#### version control ----- *meets expectations*
+- my project repository has 100 commits and uses a pull request workflow that includes related and
+logical functionality.
+- feature branches were created for the development of each class; pull requests were opened after
+each feature was complete and merged to main before creating a new feature/class branch.

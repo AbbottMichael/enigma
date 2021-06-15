@@ -1,12 +1,16 @@
 require './lib/enigma'
 
-abort("ERROR: You must provide a message to decrypt: <file.txt>") if ARGV[0] == nil
+abort("ERROR: You must provide a message to decrypt:\
+   <file.txt>") if ARGV[0] == nil
 
-abort("ERROR: You must provide a file to write the decrypted message to: <file.txt>") if ARGV[1] == nil
+abort("ERROR: You must provide a file to write the decrypted message to:\
+   <file.txt>") if ARGV[1] == nil
 
-abort("ERROR: You must provide the key used to encrypt the message: <12345>") if ARGV[2] == nil
+abort("ERROR: You must provide the key used to encrypt the message:\
+   <12345>") if ARGV[2] == nil
 
-abort("ERROR: You must provide the date used to encrypt the message: <DDMMYY>") if ARGV[3] == nil
+abort("ERROR: You must provide the date used to encrypt the message:\
+   <DDMMYY>") if ARGV[3] == nil
 
 encrypted_message = File.open(ARGV[0], 'r')
 

@@ -3,14 +3,6 @@ require './lib/cipher'
 
 class Enigma
 
-  # def character_set
-  #   ('a'..'z').to_a << ' '
-  # end
-
-  # def message_array(message)
-  #   message.downcase.split('')
-  # end
-
   def encrypt(message, key = 'random', date = 'date today')
     shifts = Shifts.new(key, date)
 
