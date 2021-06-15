@@ -1,7 +1,6 @@
 require 'simplecov'
 SimpleCov.start
 require 'rspec'
-require './lib/shifts.rb'
 require './lib/enigma.rb'
 
 RSpec.describe Enigma do
