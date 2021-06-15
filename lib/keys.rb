@@ -1,12 +1,14 @@
 require 'strscan'
 
 class Keys
-  attr_reader :key, :verified_key, :keys_hash
+  attr_reader :key,
+              :verified_key,
+              :keys_hash
 
   def initialize(key)
-    @key = key
+    @key          = key
     @verified_key = verify_key
-    @keys_hash = keys_hash_builder
+    @keys_hash    = keys_hash_builder
   end
 
   def verify_key

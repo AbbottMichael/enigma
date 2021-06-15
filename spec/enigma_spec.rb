@@ -28,21 +28,26 @@ RSpec.describe Enigma do
       expect(@enigma.character_set).to eq(expected)
     end
 
+    it 'can generate a message array' do
+      expected = [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+      expect(@enigma.message_array('Hello World')).to eq(expected)
+    end
+
     it 'can encrypt a message' do
       shifts = Shifts.new('02715', '040895')
-      expect(@enigma.encryption('Hello world', shifts)).to eq('keder ohulw')
+      expect(@enigma.cipher('Hello world', shifts, 'encrypt')).to eq('keder ohulw')
     end
 
     it 'can decrypt a message' do
       shifts = Shifts.new('02715', '040895')
-      expect(@enigma.decryption('keder ohulw', shifts)).to eq('hello world')
+      expect(@enigma.cipher('keder ohulw', shifts, 'decrypt')).to eq('hello world')
     end
 
     it 'can return an encryption hash' do
       expected = {
         encryption: 'keder ohulw',
-        key: '02715',
-        date: '040895'
+        key:        '02715',
+        date:       '040895'
       }
       expect(@enigma.encrypt('Hello world', '02715', '040895')).to eq(expected)
     end
@@ -50,8 +55,8 @@ RSpec.describe Enigma do
     it 'can return a decryption hash' do
       expected = {
         decryption: 'hello world',
-        key: '02715',
-        date: '040895'
+        key:        '02715',
+        date:       '040895'
       }
       expect(@enigma.decrypt('keder ohulw', '02715', '040895')).to eq(expected)
     end

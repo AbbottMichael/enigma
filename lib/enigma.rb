@@ -6,42 +6,36 @@ class Enigma
     ('a'..'z').to_a << ' '
   end
 
-  def encrypt(message, key = 'random', date = 'date today')
-    shifts = Shifts.new(key, date)
-    {
-      :encryption => encryption(message, shifts),
-      :key => shifts.keys.verified_key,
-      :date => shifts.offsets.verified_date
-    }
+  def message_array(message)
+    message.downcase.split('')
   end
 
-  def encryption(message, shifts)
-    message_array = message.downcase.split('')
-    shift = shifts.shifts_hash.values
+  def encrypt(message, key = 'random', date = 'date today')
+    shifts = Shifts.new(key, date)
 
-    message_array.map do |letter|
-      next letter if character_set.find_index(letter) == nil
-      shifted_char_set = character_set.rotate(shift.rotate![-1])
-      shifted_char_set[character_set.find_index(letter)]
-    end.join
+    {
+      encryption: cipher(message, shifts, 'encrypt'),
+      key:        shifts.keys.verified_key,
+      date:       shifts.offsets.verified_date
+    }
   end
 
   def decrypt(ciphertext, key, date = 'date today')
     shifts = Shifts.new(key, date)
+
     {
-      :decryption => decryption(ciphertext, shifts),
-      :key => shifts.keys.verified_key,
-      :date => shifts.offsets.verified_date
+      decryption: cipher(ciphertext, shifts, 'decrypt'),
+      key:        shifts.keys.verified_key,
+      date:       shifts.offsets.verified_date
     }
   end
 
-  def decryption(ciphertext, shifts)
-    ciphertext_array = ciphertext.downcase.split('')
-    shift = shifts.shifts_hash.values
-
-    ciphertext_array.map do |letter|
+  def cipher(message, shifts, type)
+    message_array(message).map do |letter|
       next letter if character_set.find_index(letter) == nil
-      shifted_char_set = character_set.rotate(-shift.rotate![-1])
+      shift_num = (type == 'decrypt') ? (-shifts.shifts_array.rotate![-1]) :
+        (shifts.shifts_array.rotate![-1])
+      shifted_char_set = character_set.rotate(shift_num)
       shifted_char_set[character_set.find_index(letter)]
     end.join
   end

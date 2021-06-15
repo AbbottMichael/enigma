@@ -1,8 +1,8 @@
 require './lib/enigma'
 
-abort("ERROR: You must provide a message to encrypt: <file.txt>\n") if ARGV[0] == nil
+abort("ERROR: You must provide a message to encrypt: <file.txt>") if ARGV[0] == nil
 
-abort("ERROR: You must provide a file to write the encrypted message to: <file.txt>\n") if ARGV[1] == nil
+abort("ERROR: You must provide a file to write the encrypted message to: <file.txt>") if ARGV[1] == nil
 
 message = File.open(ARGV[0], 'r')
 
@@ -20,5 +20,4 @@ ciphertext.write(encryption[:encryption])
 
 ciphertext.close
 
-puts "Created '#{ARGV[1]}' with the key #{encryption[:key]}\
- and date #{encryption[:date]}"
+puts "Created '#{ARGV[1]}' with the key #{encryption[:key]} and date #{encryption[:date]}"
