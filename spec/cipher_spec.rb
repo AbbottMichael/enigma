@@ -39,5 +39,9 @@ RSpec.describe Cipher do
 
       expect(@cipher.message_array('Hello World')).to eq(expected)
     end
+
+    it 'can encrypt a message' do
+      expect(@cipher.algorithm('Hello world', @shifts, 'encrypt')).to eq('keder ohulw')
+    end
   end
 end
