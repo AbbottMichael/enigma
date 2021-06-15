@@ -18,7 +18,7 @@ RSpec.describe Cipher do
     end
 
     it 'has readable attributes' do
-      expect(@cipher.output_message).to eq('text')
+      expect(@cipher.output_message).to eq('keder ohulw')
     end
   end
 
@@ -41,7 +41,15 @@ RSpec.describe Cipher do
     end
 
     it 'can encrypt a message' do
-      expect(@cipher.algorithm('Hello world', @shifts, 'encrypt')).to eq('keder ohulw')
+      @shifts2 = Shifts.new('02715', '040895')
+      @cipher2 = Cipher.new('Hello World', @shifts2, 'encrypt')
+      expect(@cipher2.output_message).to eq('keder ohulw')
+    end
+
+    it 'can decrypt a message' do
+      @shifts2 = Shifts.new('02715', '040895')
+      @cipher3 = Cipher.new('keder ohulw', @shifts2, 'decrypt')
+      expect(@cipher3.output_message).to eq('hello world')
     end
   end
 end
