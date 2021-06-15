@@ -1,0 +1,7 @@
+command line interface
+add a command line interface for encryption and decryption. you should create a
+runner file called encrypt.rb that takes two command line arguments. the first
+is an existing file that contains a message to encrypt. the second is a file
+where your program should write the encrypted message. in addition to writing
+the encrypted message to the file, your program should output to the screen the
+file it wrote to, the key and the date.

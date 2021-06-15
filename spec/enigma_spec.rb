@@ -18,31 +18,6 @@ RSpec.describe Enigma do
 
   describe 'methods' do
 
-    it 'can generate the character_set' do
-      expected = [
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
-        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-        'y', 'z', ' '
-      ]
-
-      expect(@enigma.character_set).to eq(expected)
-    end
-
-    it 'can generate a message array' do
-      expected = [ 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
-      expect(@enigma.message_array('Hello World')).to eq(expected)
-    end
-
-    it 'can encrypt a message' do
-      shifts = Shifts.new('02715', '040895')
-      expect(@enigma.cipher('Hello world', shifts, 'encrypt')).to eq('keder ohulw')
-    end
-
-    it 'can decrypt a message' do
-      shifts = Shifts.new('02715', '040895')
-      expect(@enigma.cipher('keder ohulw', shifts, 'decrypt')).to eq('hello world')
-    end
-
     it 'can return an encryption hash' do
       expected = {
         encryption: 'keder ohulw',
