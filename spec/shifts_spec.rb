@@ -21,7 +21,7 @@ RSpec.describe Shifts do
       expect(@shifts.offsets).to be_an_instance_of(Offsets)
       expect(@shifts.keys.verified_key).to eq('02715')
       expect(@shifts.offsets.verified_date).to eq('040895')
-      expect(@shifts.shifts_hash).to be_a(Hash)
+      expect(@shifts.shifts_array).to be_a(Array)
     end
 
     it "can accept 'random' and 'date today' default value indicator strings" do
@@ -29,20 +29,14 @@ RSpec.describe Shifts do
 
       expect(@shifts2.keys.verified_key.to_i).to be_an(Integer)
       expect(@shifts2.offsets.verified_date.to_i).to be_an(Integer)
-      expect(@shifts2.shifts_hash).to be_a(Hash)
+      expect(@shifts2.shifts_array).to be_a(Array)
     end
   end
 
   describe 'methods' do
 
     it 'can create a shifts hash' do
-      expected = {
-        A: 3,
-        B: 27,
-        C: 73,
-        D: 20
-      }
-      expect(@shifts.shifts_hash).to eq(expected)
+      expect(@shifts.shifts_array).to eq([3, 27, 73, 20])
     end
   end
 end
